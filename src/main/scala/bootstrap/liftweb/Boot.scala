@@ -1,5 +1,6 @@
 package bootstrap.liftweb
 
+import code.rest.RestApi
 import net.liftweb._
 import util._
 import Helpers._
@@ -49,5 +50,7 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
+    LiftRules.statelessDispatch.append(RestApi)
+    LiftRules.suffixSplitters.prepend(RestApi.splitter)
   }
 }
