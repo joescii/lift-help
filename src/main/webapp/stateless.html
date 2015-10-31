@@ -19,7 +19,7 @@
       </div>
       <script type="application/javascript">
         $(function() {
-          $("#lift_ajax").text(typeof window.lift === "window" && typeof lift.ajax === "function")
+          $("#lift_ajax").text(typeof window.lift === "object" && typeof lift.ajax === "function")
         });
       </script>
       </p>
