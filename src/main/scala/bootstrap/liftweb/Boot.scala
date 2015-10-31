@@ -38,8 +38,6 @@ class Boot {
       case StatelessReqTest("stateless" :: _, req) => true
     }
 
-    LiftRules.autoIncludeAjaxCalc.default.set(() => () => (session: LiftSession) => session.stateful_?)
-
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
       Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
