@@ -34,6 +34,10 @@ class Boot {
     // each page, just comment this line out.
     LiftRules.setSiteMap(SiteMap(entries:_*))
 
+    LiftRules.statelessReqTest.append {
+      case StatelessReqTest("stateless" :: _, req) => true
+    }
+
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
       Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
