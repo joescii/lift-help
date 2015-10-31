@@ -15,8 +15,14 @@
       <div data-lift="Stateful">
         This page is stateful: <span id="stateful">don't know</span>
       </div>
+      <div>
+        This page has lift.ajax(): <span id="lift_ajax">don't know</span>
+      </div>
       <script type="application/javascript">
         window.blah = "bleh";
+        $(function() {
+          $("#lift_ajax").text(typeof window.lift === "window" && typeof lift.ajax === "function")
+        });
       </script>
       <div data-lift="AjaxButton"><input type="button" value="Ajax"></div>
 
