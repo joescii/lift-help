@@ -1,4 +1,4 @@
-name := "Lift 2.6 starter template"
+name := "Lift starter template"
 
 version := "0.0.4"
 
