@@ -1,13 +1,11 @@
 package code.snippet
 
+import net.liftweb.actor.LAFuture
 import net.liftweb.http.{SessionVar, SHtml}
-import net.liftweb.http.FutureWithSession._
+import net.liftweb.http.LAFutureWithSession._
 import net.liftweb.http.js.JE.JsVar
 import net.liftweb.http.js.JsCmds
 import net.liftweb.util.Helpers._
-
-import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
 
 object MyVar extends SessionVar("init")
 
@@ -23,5 +21,5 @@ object AjaxButton {
       }
     )
 
-  def futureOp(s:String):Future[String] = Future("Back to the Future[T]: "+s)
+  def futureOp(s:String):LAFuture[String] = LAFuture(() => "Back to the Future[T]: "+s)
 }
