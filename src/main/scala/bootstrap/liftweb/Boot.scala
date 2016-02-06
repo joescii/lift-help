@@ -1,6 +1,9 @@
 package bootstrap.liftweb
 
 import net.liftweb._
+import net.liftweb.http.js.JE._
+import net.liftweb.http.js._
+import net.liftweb.http.js.JsCmds._
 import util._
 import Helpers._
 
@@ -50,5 +53,8 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
+    LiftRules.javaScriptSettings.default.set(() => () => (Full((session: LiftSession) => LiftJavaScript.settings.extend(JsObj(
+      "ajaxPost" -> AnonFunc(JE.Call("console.log", "hijacked!!"))
+    ))): Box[LiftSession => JsObj]))
   }
 }
