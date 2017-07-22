@@ -46,8 +46,17 @@ class Boot {
 
     //Init the jQuery module, see http://liftweb.net/jquery for more information.
     LiftRules.jsArtifacts = JQueryArtifacts
-    JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
+    JQueryModule.InitParam.JQuery=JQueryModule.JQuery1113
     JQueryModule.init()
 
+    LiftRules.securityRules = () => {
+      SecurityRules(content = Some(ContentSecurityPolicy(
+        scriptSources = List(
+            ContentSourceRestriction.Self),
+        styleSources = List(
+            ContentSourceRestriction.Self)
+            )))
+    } 
+    
   }
 }
