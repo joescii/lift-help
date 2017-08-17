@@ -56,7 +56,11 @@ class Boot {
         styleSources = List(
             ContentSourceRestriction.Self)
             )))
-    } 
-    
+    }
+
+    println("Playing with safe settings...")
+    val f = LiftRules.guardedSettingViolationFunc.is
+    LiftRules.guardedSettingViolationFunc.set(v => throw v.toException)
+    println("Ship it!!!")
   }
 }
