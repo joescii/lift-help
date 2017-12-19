@@ -52,10 +52,12 @@ class Boot {
     LiftRules.securityRules = () => {
       SecurityRules(content = Some(ContentSecurityPolicy(
         scriptSources = List(
-            ContentSourceRestriction.Self),
+          ContentSourceRestriction.UnsafeEval,
+          ContentSourceRestriction.UnsafeInline,
+          ContentSourceRestriction.Self),
         styleSources = List(
-            ContentSourceRestriction.Self)
-            )))
+          ContentSourceRestriction.Self)
+        )))
     } 
     
   }
