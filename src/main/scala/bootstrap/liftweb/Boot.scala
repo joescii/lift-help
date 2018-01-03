@@ -3,13 +3,13 @@ package bootstrap.liftweb
 import net.liftweb._
 import util._
 import Helpers._
-
 import common._
 import http._
 import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
+import net.liftweb.http.provider.HTTPCookie
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -48,6 +48,8 @@ class Boot {
     LiftRules.jsArtifacts = JQueryArtifacts
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery1113
     JQueryModule.init()
+
+    LiftRules.earlyInStateful.append(r => S.addCookie(HTTPCookie("TEST", "dsafdas")))
 
     LiftRules.securityRules = () => {
       SecurityRules(content = Some(ContentSecurityPolicy(
