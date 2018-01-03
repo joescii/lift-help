@@ -1,5 +1,6 @@
 package code.snippet
 
+import net.liftweb.common.Full
 import net.liftweb.http.js.JE.JsRaw
 import net.liftweb.http.{S, SHtml}
 import net.liftweb.http.js.JsCmd
@@ -13,7 +14,7 @@ object CookieForm {
     var value: String = ""
 
     def process(): JsCmd = {
-      val cookie = HTTPCookie(name, value)
+      val cookie = HTTPCookie(name, value).copy(path = Full("/"))
 
       println(s"Adding cookie $cookie")
       S.addCookie(cookie)
